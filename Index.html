@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universal AI Chat Interface</title>
+  <title>Universal AI Chat Interface (ChatGPT 5.4 Clone)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -11,19 +11,18 @@
     }
   </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-50">
 
   <!-- Sidebar -->
-  <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-800 text-white p-4 shadow-lg overflow-auto hidden md:block">
+  <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-800 text-white p-4 shadow-lg overflow-y-auto hidden md:block">
     <h2 class="text-xl font-bold mb-4">Chat History</h2>
     <div id="chat-history" class="space-y-2 overflow-y-auto h-3/4"></div>
     <button id="clear-history" class="mt-4 text-red-400 hover:text-red-500">Clear History</button>
   </div>
 
-  <!-- Main Content -->
+  <!-- Main Chat Interface -->
   <div class="flex justify-between min-h-screen">
     <div class="flex-1 p-6">
-      <!-- Chat Window -->
       <div id="chat-container" class="bg-white p-4 rounded-lg shadow-md h-full overflow-y-auto">
         <div id="messages" class="space-y-4 h-full overflow-y-auto">
           <!-- Messages will be appended here -->
@@ -99,10 +98,10 @@
 
     // Fetch AI response using OpenRouter API
     const getAIResponse = async (userMessage) => {
-      const url = `https://api.openrouter.com/v1/models/${modelName || 'default-model'}/chat`;
+      const url = `https://api.openrouter.com/v1/models/${modelName || 'gpt-5.4'}-chat/completions`;
       const headers = { 'Authorization': `Bearer ${apiKey}` };
       const body = {
-        model: modelName || 'default-model',
+        model: modelName || 'gpt-5.4',
         messages: [{ role: 'user', content: userMessage }],
       };
 
